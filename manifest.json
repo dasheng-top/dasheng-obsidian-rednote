@@ -1,0 +1,9 @@
+{
+    "id": "dasheng-obsidian-rednote",
+    "name": "Dasheng RedNote",
+    "version": "2.0.0",
+    "minAppVersion": "0.15.0",
+    "description": "大圣风格小红书图文助手 (自动生成封面 + 提取摘要)",
+    "author": "Dasheng",
+    "isDesktopOnly": true
+}

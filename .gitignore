@@ -1,0 +1,20 @@
+# Node
+node_modules/
+npm-debug.log
+*.log
+
+# Build
+*.js.map
+data.json
+claude.ps1
+# macOS
+.DS_Store
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Obsidian
+.obsidian/
