@@ -5306,15 +5306,19 @@ var AutoPaginator = class {
     const paddingBottom = parseFloat(cs.paddingBottom) || 0;
     const paddingLeft = parseFloat(cs.paddingLeft) || 0;
     const paddingRight = parseFloat(cs.paddingRight) || 0;
-    const targetWidth = originalRect.width - paddingLeft - paddingRight;
-    const targetHeight = originalRect.height - paddingTop - paddingBottom;
+    const imagePreviewWidth = originalRect.width - paddingLeft - paddingRight;
+    const imagePreviewHeight = originalRect.height - paddingTop - paddingBottom;
+    const sectionHM = 13;
+    const targetWidth = imagePreviewWidth - sectionHM * 2;
+    const targetHeight = imagePreviewHeight;
     if (targetWidth <= 0 || targetHeight <= 0)
       return;
+    const safePageHeight = targetHeight - 10;
     sections.forEach((section) => {
       this.paginateSection(
         section,
         targetWidth,
-        targetHeight,
+        safePageHeight,
         paddingLeft,
         paddingRight,
         paddingTop,
@@ -6534,6 +6538,9 @@ var ThemeManager = class {
         (_a = el.querySelector(".content")) == null ? void 0 : _a.setAttribute("style", titleStyle.content);
         (_b = el.querySelector(".after")) == null ? void 0 : _b.setAttribute("style", titleStyle.after);
       });
+    });
+    element.querySelectorAll("h1").forEach((el) => {
+      el.setAttribute("style", `font-family: ${this.currentFont}; font-size: 250%; font-weight: 700; margin: 0 0 8px 0;`);
     });
     element.querySelectorAll("p").forEach((el) => {
       var _a, _b;

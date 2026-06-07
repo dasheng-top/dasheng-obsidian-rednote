@@ -209,6 +209,11 @@ export class ThemeManager {
             });
         });
 
+        // H1 标题自动放大
+        element.querySelectorAll('h1').forEach(el => {
+            el.setAttribute('style', `font-family: ${this.currentFont}; font-size: 250%; font-weight: 700; margin: 0 0 8px 0;`);
+        });
+
         // 应用段落样式
         element.querySelectorAll('p').forEach(el => {
             if (!el.parentElement?.closest('p') && !el.parentElement?.closest('blockquote')) {

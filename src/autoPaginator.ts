@@ -24,13 +24,21 @@ export class AutoPaginator {
         const paddingLeft = parseFloat(cs.paddingLeft) || 0;
         const paddingRight = parseFloat(cs.paddingRight) || 0;
 
-        const targetWidth = originalRect.width - paddingLeft - paddingRight;
-        const targetHeight = originalRect.height - paddingTop - paddingBottom;
+        const imagePreviewWidth = originalRect.width - paddingLeft - paddingRight;
+        const imagePreviewHeight = originalRect.height - paddingTop - paddingBottom;
+
+        // 计算 section 的实际水平 margin（CSS 中 .red-content-section 有 margin: 0 13px）
+        const sectionHM = 13;
+        const targetWidth = imagePreviewWidth - sectionHM * 2;
+        const targetHeight = imagePreviewHeight;
 
         if (targetWidth <= 0 || targetHeight <= 0) return;
 
+        // 减去少量安全余量，防止子像素渲染差异导致底部内容溢出
+        const safePageHeight = targetHeight - 10;
+
         sections.forEach(section => {
-            this.paginateSection(section, targetWidth, targetHeight,
+            this.paginateSection(section, targetWidth, safePageHeight,
                 paddingLeft, paddingRight, paddingTop, paddingBottom, imagePreview);
         });
     }
